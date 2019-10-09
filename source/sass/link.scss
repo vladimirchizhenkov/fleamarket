@@ -1,0 +1,117 @@
+.link {
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+
+  &--white {
+    font-size: $fontSizeS;
+    color: $colorWhite;
+    transition: color 0.3s;
+    text-transform: uppercase;
+    &:hover {
+      color: $colorRed;
+    }
+  }
+
+  &--black {
+    font-size: $fontSizeM;
+    color: $colorMain;
+    text-decoration: none;
+    transition: color 0.3s;
+    &:hover {
+      color: $colorRed;
+    }
+  }
+
+  &--red {
+    font-size: $fontSizeM;
+    color: $colorRed;
+    text-decoration: none;
+    transition: color 0.3s;
+    &:hover {
+      color: $colorRedTransparent;
+    }
+  }
+
+  &--like {
+    &:before {
+      font-family: 'FontAwesome';
+      content: "\f004";
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+  }
+
+  &--login {
+    display: inline-block;
+    background-color: $colorRed;
+    padding: 8px;
+    transition: color 0.3s, background-color 0.3s;
+    &:hover {
+      color: $colorWhite;
+      background-color: $colorRedTransparent;
+    }
+    &:before {
+      font-family: 'FontAwesome';
+      content: "\f08b";
+      padding-right: 5px;
+    }
+  }
+
+  &--burger {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    top: 0;
+    &:hover:before {
+      border-top: 2px solid $colorRed;
+      border-bottom: 2px solid $colorRed;
+    }
+    &:hover:after {
+      border-top: 2px solid $colorRed;
+    }
+
+    &:before {
+      position: absolute;
+      display: block;
+      content: '';
+      border-top: 2px solid $colorMain;
+      border-bottom: 2px solid $colorMain;
+      width: 24px;
+      height: 8px;
+      top: 8px;
+      left: 0;
+      -webkit-transition: border-top 0.3s, border-bottom 0.3s;
+      -moz-transition: border-top 0.3s, border-bottom 0.3s;
+      -ms-transition: border-top 0.3s, border-bottom 0.3s;
+      -o-transition: border-top 0.3s, border-bottom 0.3s;
+      transition: border-top 0.3s, border-bottom 0.3s;
+    }
+    &:after {
+      position: absolute;
+      display: block;
+      content: '';
+      border-top: 2px solid $colorMain;
+      width: 24px;
+      top: 20px;
+      left: 0;
+      -webkit-transition: border-top 0.3s;
+      -moz-transition: border-top 0.3s;
+      -ms-transition: border-top 0.3s;
+      -o-transition: border-top 0.3s;
+      transition: border-top 0.3s;
+    }
+  }
+
+  &--mr-20 {
+    margin-right: 20px;
+  }
+  &--mr-30 {
+    margin-right: 30px;
+  }
+  &--ml-30 {
+    margin-left: 30px;
+  }
+}

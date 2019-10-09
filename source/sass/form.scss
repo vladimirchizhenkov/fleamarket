@@ -1,0 +1,37 @@
+.form {
+
+  &__caption {
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__input {
+    @include input-style;
+  }
+
+  &__select {
+    @include input-style;
+  }
+
+  &__button {
+
+  }
+
+  &__status {
+    display: block;
+    font-size: 12px;
+    margin-top: 8px;
+
+    &--error {
+      color: $colorRed;
+    }
+    &--success {
+      color: $colorBlue;
+    }
+  }
+
+}

@@ -1,0 +1,31 @@
+.social {
+
+  &__link {
+    display: inline-block;
+    color: $colorMain;
+    font-family: 'FontAwesome';
+    font-size: 30px;
+    transition: color 0.3s;
+    text-decoration: none;
+    &:hover {
+      color: $colorRed;
+    }
+
+    &--vk:before {
+      content: '\f189';
+    }
+    &--tw:before {
+      content: '\f081';
+    }
+    &--yt:before {
+      content: '\f167';
+    }
+    &--telegr:before {
+      content: '\f2c6';
+    }
+    &--mr-12 {
+      margin-right: 12px;
+    }
+  }
+
+}

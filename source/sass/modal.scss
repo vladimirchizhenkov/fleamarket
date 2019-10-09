@@ -1,0 +1,75 @@
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99;
+
+  &--show {
+    display: flex;
+  }
+
+  &__btn {
+    display: block;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: -35px;
+    right: -45px;
+    &:hover:before {
+      background-color: $colorRed;
+    }
+    &:hover:after {
+      background-color: $colorRed;
+    }
+    &:before {
+      display: block;
+      position: absolute;
+      content: '';
+      width: 25px;
+      height: 1px;
+      top: 50%;
+      left: 0;
+      background-color: $colorWhite;
+      transform: rotate(-45deg);
+      transition: background-color 0.3s;
+    }
+    &:after {
+      display: block;
+      position: absolute;
+      content: '';
+      width: 25px;
+      height: 1px;
+      top: 50%;
+      left: 0;
+      background-color: $colorWhite;
+      transform: rotate(45deg);
+      transition: background-color 0.3s;
+    }
+  }
+
+  &__back {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.6);
+    top: 0;
+    left: 0;
+  }
+
+  &__content {
+    position: relative;
+    max-width: 500px;
+    width: 100%;
+    background-color: $colorWhite;
+    padding: 24px;
+    z-index: 101;
+  }
+
+}

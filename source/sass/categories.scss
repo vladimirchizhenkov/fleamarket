@@ -1,0 +1,20 @@
+.categories {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  &__subcategories {
+    list-style: none;
+    margin-bottom: 4px;
+    padding-left: 12px;
+  }
+
+  &__item {
+    margin-top: 6px;
+  }
+
+  &__link {
+
+  }
+
+}

@@ -1,0 +1,46 @@
+.card-in {
+  border: 1px solid #ccc;
+
+  &__header {
+    padding: 24px;
+    border-bottom: 1px solid #ccc;
+  }
+
+  &__gallery {
+    max-width: 660px;
+    width: 100%;
+    padding: 24px;
+  }
+
+  &__contacts {
+    width: 300px;
+    padding: 24px;
+    border-left: 1px solid #ccc;
+  }
+
+  &__title {
+    margin-bottom: 6px;
+  }
+
+  &__date {
+    margin-bottom: 12px;
+  }
+
+  &__photo {
+    width: 300px;
+  }
+
+  &__tel {
+    margin-bottom: 12px;
+  }
+
+  &__user-name {
+    margin-bottom: 12px;
+  }
+
+  &__description {
+    border-top: 1px solid #ccc;
+    padding: 24px;
+  }
+
+}

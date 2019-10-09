@@ -1,0 +1,20 @@
+.burger {
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__title {
+    margin-top: 0;
+  }
+
+  &__item {
+    margin-bottom: 6px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+}

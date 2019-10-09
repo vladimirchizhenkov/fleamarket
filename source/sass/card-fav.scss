@@ -1,0 +1,43 @@
+.card-fav {
+  width: 470px;
+  border-right: 3px solid transparent;
+  box-shadow: $BoxShadowMain;
+  margin-bottom: 24px;
+  transition: border 0.3s, box-shadow 0.3s;
+  &:hover {
+    border-right: 3px solid $colorRed;
+    box-shadow: none;
+  }
+
+  &__left {
+    width: 150px;
+    height: 150px;
+  }
+
+  &__right {
+    padding: 12px 12px 12px 0;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__title {
+    display: inline-block;
+    margin-bottom: 12px;
+  }
+
+  &__price {
+    margin-bottom: 6px;
+  }
+
+  &__adress {
+    margin-bottom: 6px;
+  }
+
+  &__date {
+    margin-bottom: 6px;
+  }
+
+}

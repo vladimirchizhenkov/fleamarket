@@ -1,0 +1,8 @@
+@mixin input-style {
+  display: inline-block;
+  max-width: 500px;
+  width: 100%;
+  border: 1px solid $colorMain;
+  background-color: $colorWhite;
+  padding: 8px 16px;
+}

@@ -1,0 +1,32 @@
+.search-panel {
+  border: 2px solid $colorMain;
+  border-radius: 4px;
+
+  &__select {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    padding: 5px;
+    &--br {
+      border-right: 2px solid $colorMain;
+    }
+  }
+
+  &__option {
+    background-color: transparent;
+  }
+
+  &__input {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    padding: 6px 5px 5px 5px;
+    &--btn {
+      cursor: pointer;
+    }
+    &--br {
+      border-right: 2px solid $colorMain;
+    }
+  }
+
+}

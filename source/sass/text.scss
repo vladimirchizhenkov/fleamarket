@@ -1,0 +1,42 @@
+.text {
+  color: $colorMain;
+
+  &--white {
+    color: $colorWhite;
+  }
+
+  &--size-xs {
+    font-size: $fintSizeXS;
+  }
+  &--size-s {
+    font-size: $fontSizeS;
+  }
+  &--size-m {
+    font-size: $fontSizeM;
+  }
+  &--size-l {
+    font-size: $fontSizeL;
+  }
+  &--size-xl {
+    font-size: $fontSizeXL;
+  }
+
+  &--title-xs {
+    text-transform: uppercase;
+    font-size: 14px;
+    margin-top: 0;
+    margin-bottom: 18px;
+  }
+
+  &--title-s {
+    text-transform: uppercase;
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 24px;
+  }
+  &--title-l {
+    text-transform: uppercase;
+    font-size: 24px;
+  }
+
+}

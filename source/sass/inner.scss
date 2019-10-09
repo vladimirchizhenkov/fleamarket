@@ -1,0 +1,46 @@
+.inner {
+
+  &--flex {
+    display: flex;
+  }
+  &--flex-wrap {
+    flex-wrap: wrap;
+  }
+  &--flex-between {
+    justify-content: space-between;
+  }
+  &--flex-center {
+    justify-content: center;
+  }
+
+  &--flex-middle {
+    align-items: center;
+  }
+  &--flex-column {
+    flex-direction: column;
+  }
+
+  &--text-center {
+    text-align: center;
+  }
+
+  &--py-24 {
+    padding: 24px 0;
+  }
+
+  &--mb-12 {
+    margin-bottom: 12px;
+  }
+
+  &--mb-18 {
+    margin-bottom: 18px;
+  }
+
+  &--mb-24 {
+    margin-bottom: 24px;
+  }
+
+  &--mb-36 {
+    margin-bottom: 36px;
+  }
+}

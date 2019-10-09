@@ -1,0 +1,17 @@
+.button {
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  background-color: $colorBlue;
+  border: 2px solid transparent;
+  color: $colorWhite;
+  padding: 8px 16px;
+  transition: background-color 0.3s, border 0.3s, color 0.3s;
+
+  &:hover {
+    background-color: transparent;
+    color: $colorBlue;
+    border: 2px solid $colorBlue;
+  }
+
+}

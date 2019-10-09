@@ -1,0 +1,27 @@
+.footer {
+  background-color: $colorWhite;
+
+  &__uphead {
+    background-image: url('/static/footer__imghead.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    height: 215px;
+  }
+
+  &__logo {
+    position: relative;
+    top: -7px;
+    width: 205px;
+    height: 135px;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__link {
+    margin-bottom: 12px;
+  }
+
+}
