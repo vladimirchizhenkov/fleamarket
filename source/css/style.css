@@ -889,7 +889,7 @@ html, body {
 .footer {
   background-color: #fff; }
   .footer__uphead {
-    background-image: url("/source/img/static/footer__imghead.png");
+    background-image: url("/static/footer__imghead.png");
     -webkit-background-size: cover;
             background-size: cover;
     background-repeat: no-repeat;
@@ -1096,10 +1096,7 @@ html, body {
   border-bottom: 1px solid #ccc; }
 
 .modal {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: none;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
       -ms-flex-pack: center;
