@@ -8,19 +8,19 @@
                 <div class="form__title text text--size-s">
                     Введите ваше имя
                 </div>
-                <input type="text" class="form__input"/>
+                <input name="form_name" type="text" class="form__input"/>
             </div>
             <div class="inner inner--mb-18">
                 <div class="form__title text text--size-s">
                     Введите Контактный телефон
                 </div>
-                <input type="text" class="form__input"/>
+                <input name="form_tel" type="text" class="form__input"/>
             </div>
             <div class="inner inner--mb-18">
                 <div class="form__title text text--size-s">
                     Введите город
                 </div>
-                <input type="text" class="form__input"/>
+                <input name="form_city" type="text" class="form__input"/>
             </div>
             <div class="inner inner--mb-18">
                 <div class="form__title text text--size-s">
@@ -34,16 +34,16 @@
                 <div class="form__title text text--size-s">
                     Введите название товара
                 </div>
-                <input type="text" class="form__input"/>
+                <input name="form_product" type="text" class="form__input"/>
             </div>
             <div class="inner inner--mb-36">
                 <div class="form__title text text--size-s">
                     Введите цену товара
                 </div>
-                <input type="text" class="form__input"/>
+                <input name="form_price" type="text" class="form__input"/>
             </div>
             <div class="inner inner--text-center">
-                <button class="button">Разместить объявление</button>
+                <button id="btnAddFastProducts" class="button">Разместить объявление</button>
             </div>
         </form>
     </div>

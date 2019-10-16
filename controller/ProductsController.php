@@ -19,4 +19,15 @@ class ProductsController extends BaseController
 
         $this->content = $this->templateBuild(__DIR__ . '/../view/tpl_parts/cards-out.html.php', ['mFProducts' => $mFProducts]);
     }
+
+    public function addNewFastProduct() {
+        $db = DB::connect();
+        $db->exec("set names utf8");
+
+        $mFtrade = new FastProductModel($db);
+        $addFastProduct = $mFtrade->addNewItem();
+
+        return $addFastProduct;
+    }
+
 }

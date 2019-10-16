@@ -35,4 +35,9 @@ abstract class BaseModel
 
         return $stmt->fetch();
     }
+
+    public function addNewItem() {
+        echo 'work';
+    }
+
 }

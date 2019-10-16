@@ -24,7 +24,6 @@
             </div>
         </div>
     </div>
-
     <?php include_once 'tpl_parts/footer.php' ?>
 
 </div>
