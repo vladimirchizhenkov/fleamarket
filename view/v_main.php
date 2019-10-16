@@ -27,6 +27,10 @@
     <?php include_once 'tpl_parts/footer.php' ?>
 
 </div>
+
 <script src="/source/js/common.js"></script>
+<script src="/source/js/ajax.js"></script>
+<script src="/source/js/validate-form.js"></script>
+
 </body>
 </html>

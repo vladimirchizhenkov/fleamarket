@@ -4,54 +4,6 @@ window.onload = function () {
     let closeBtnModal = document.querySelectorAll('.modal__btn');
     let btnAddFastProducts = document.querySelector('#btnAddFastProducts');
 
-    // Объект с массивами ошибок для валидации
-
-    let errorNotes = {
-      "basically": ['Поле не должно быть пустым'],
-      "title" : ['Название длина названия товара 2 символа'],
-      "tel" : ['Минимальное значение 5 символов', 'Телефон должен содержать только цифры'],
-      "city" : ['Минимальное значение 2 символа']
-    };
-
-    function ajax(url, method, functionName, dataArray) {
-        let xhttp = new XMLHttpRequest();
-
-        xhttp.open(method, url, true);
-        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhttp.send(dataArray);
-
-        xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                functionName(this);
-            }
-        };
-
-        function requestData(dataArr) {
-            let out = '';
-            for (let key in dataArr) {
-                out += `${key}=${dataArr[key]}&`
-            }
-        }
-    }
-
-    function validateEmpty() {
-        if (this.value === null || undefined) {
-            console.log('empty');
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-    function validateMinWidth() {
-        if (this.value.length < 2) {
-            console.log('min width not validate');
-            return false;
-        } else {
-            return true
-        }
-    }
-
     function showModal() {
         let getDataAttr = this.getAttribute('data-modal');
         let getCurrentModal = document.querySelector('#' + getDataAttr);
@@ -72,14 +24,6 @@ window.onload = function () {
         btn.onclick = closeModal;
     });
 
-    function requestData(dataArr) {
-        let out = '';
-        for (let key in dataArr) {
-            out += `${key}=${dataArr[key]}&`
-        }
-        return out;
-    }
-
     btnAddFastProducts.onclick = function (event) {
         event.preventDefault();
         let parentFormElement = this.form.closest('.form');
@@ -97,8 +41,11 @@ window.onload = function () {
             "price": inputPrice
         };
 
+        ajax('/controller/testajax.php', 'POST', login, data);
 
-
+        function login(result) {
+            console.log(result);
+        }
     };
 
 };
