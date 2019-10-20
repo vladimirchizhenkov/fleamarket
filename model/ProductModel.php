@@ -6,6 +6,8 @@
  * Time: 22:47
  */
 
+// На данный момент эта модель не используется, только FastProductModel;
+
 namespace models;
 
 class ProductModel extends BaseModel

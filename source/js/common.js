@@ -24,28 +24,28 @@ window.onload = function () {
         btn.onclick = closeModal;
     });
 
-    btnAddFastProducts.onclick = function (event) {
-        event.preventDefault();
-        let parentFormElement = this.form.closest('.form');
-        let inputName = parentFormElement.querySelector('.form__input[name="form_name"]').value;
-        let inputTel = parentFormElement.querySelector('.form__input[name="form_tel"]').value;
-        let inputCity = parentFormElement.querySelector('.form__input[name="form_city"]').value;
-        let inputProductName = parentFormElement.querySelector('.form__input[name="form_product"]').value;
-        let inputPrice = parentFormElement.querySelector('.form__input[name="form_price"]').value;
-
-        let data = {
-            "name": inputName,
-            "tel": inputTel,
-            "city": inputCity,
-            "productName": inputProductName,
-            "price": inputPrice
-        };
-
-        ajax('/controller/testajax.php', 'POST', login, data);
-
-        function login(result) {
-            console.log(result);
-        }
-    };
+    // btnAddFastProducts.onclick = function (event) {
+    //     event.preventDefault();
+    //     let parentFormElement = this.form.closest('.form');
+    //     let inputName = parentFormElement.querySelector('.form__input[name="form_name"]').value;
+    //     let inputTel = parentFormElement.querySelector('.form__input[name="form_tel"]').value;
+    //     let inputCity = parentFormElement.querySelector('.form__input[name="form_city"]').value;
+    //     let inputProductName = parentFormElement.querySelector('.form__input[name="form_product"]').value;
+    //     let inputPrice = parentFormElement.querySelector('.form__input[name="form_price"]').value;
+    //
+    //     let data = {
+    //         "name": inputName,
+    //         "tel": inputTel,
+    //         "city": inputCity,
+    //         "productName": inputProductName,
+    //         "price": inputPrice
+    //     };
+    //
+    //     ajax('/controller/ProductController/addNewFastProduct', 'POST', addFastProduct, data);
+    //
+    //     function addFastProduct() {
+    //         setTimeout(location.reload(), "2000");
+    //     }
+    // };
 
 };

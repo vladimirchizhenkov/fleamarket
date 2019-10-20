@@ -12,7 +12,6 @@ use core\Templater;
 use models\BaseModel;
 use models\FastProductModel;
 use controller\BaseController;
-use controller\CardController;
 
 function __autoload($classname) {
     include_once __DIR__ . DIRECTORY_SEPARATOR .  str_replace('\\', DIRECTORY_SEPARATOR, $classname) . 'php';
@@ -29,8 +28,11 @@ switch ($controller) {
     case 'products':
         $controller = sprintf('controller\%sController', 'Products');
         break;
-    case 'user':
-        $controller = sprintf('controller\%sController', 'User');
+//    case 'user':
+//        $controller = sprintf('controller\%sController', 'User');
+//        break;
+    case 'addFastProduct':
+        $controller = 'controller\ProductsController';
         break;
 
     default:
@@ -38,7 +40,7 @@ switch ($controller) {
         break;
 }
 
-$action = isset($uriParts[1]) && $uriParts[1] !== '' && is_string($uriParts) ? $uriParts[1] : 'index';
+$action = isset($uriParts[1]) && $uriParts[1] !== '' ? $uriParts[1] : 'index';
 $action = sprintf('%sAction', $action);
 
 # получить id новости, карточки и т.п.
