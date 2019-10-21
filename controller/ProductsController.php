@@ -31,7 +31,7 @@ class ProductsController extends BaseController
         $mFtrade = new FastProductModel($db);
         $mFtrade->addFastProduct($data);
 
-//        header('Location: /');
+        header('Location: /');
     }
 
 }
