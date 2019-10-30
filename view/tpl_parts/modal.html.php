@@ -2,7 +2,7 @@
     <div class="modal__back"></div>
     <div class="modal__content">
         <span data-modal="addFastProduct" class="modal__btn"></span>
-        <form action="/addFastProduct/addFastProduct" method="post" class="form">
+        <form enctype="multipart/form-data" action="/addFastProduct/addFastProduct" method="post" class="form">
             <div class="form__caption text text--title-s">Разместить объявление</div>
             <div class="inner inner--mb-18">
                 <div class="form__title text text--size-s">
@@ -30,7 +30,7 @@
                     <option class="form__option">Выберите категорию</option>
                 </select>
             </div>
-            <div class="inner inner--mbroduct=&form_price=-18">
+            <div class="inner inner--mb-36">
                 <div class="form__title text text--size-s">
                     Введите название товара
                 </div>
@@ -42,6 +42,10 @@
                 </div>
                 <input name="form_price" type="text" class="form__input"/>
             </div>
+
+            <input type="hidden" name="MAX_FILE_SIZE" value="500000" />
+            <input name="form__file" type="file" />
+
             <div class="inner inner--text-center">
                 <input type="submit" id="btnAddFastProducts" class="button" value="Разместить объявление">
             </div>

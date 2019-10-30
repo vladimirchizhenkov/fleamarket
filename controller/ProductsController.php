@@ -27,6 +27,14 @@ class ProductsController extends BaseController
         $db->exec("set names utf8");
 
         $data = $_POST;
+        $f_data = $_FILES;
+
+        var_dump($_FILES['form__file']['name']);
+
+        $uploaddir = '/var/www/fleaphp.local/source/uploads/';
+        $uploadfile = $uploaddir . basename($_FILES['form__file']['tmp_name']) . '.' . basename($_FILES['form__file']['type']);
+        move_uploaded_file($_FILES['form__file']['tmp_name'], $uploadfile);
+        die();
 
         $mFtrade = new FastProductModel($db);
         $mFtrade->addFastProduct($data);
