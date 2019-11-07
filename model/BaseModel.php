@@ -27,11 +27,11 @@ abstract class BaseModel
     }
 
     public function getItemByID($id) {
-        $sql = sprintf('SELECT * FROM %s WHERE id = :id', $this->table);
+        $params = ['id' => $id];
+        $sql = sprintf('SELECT * FROM %s WHERE ftrade_id = :id', $this->table);
 
         $stmt = $this->db->prepare($sql);
-        $stmt->execute([
-            'id' => $id]);
+        $stmt->execute($params);
 
         return $stmt->fetch();
     }

@@ -13,8 +13,8 @@ use models\BaseModel;
 use models\FastProductModel;
 use controller\BaseController;
 
-function __autoload($classname) {
-    include_once __DIR__ . DIRECTORY_SEPARATOR .  str_replace('\\', DIRECTORY_SEPARATOR, $classname) . 'php';
+function __autoload($class) {
+    include_once __DIR__ . DIRECTORY_SEPARATOR .  str_replace('\\', DIRECTORY_SEPARATOR, $class) . 'php';
 }
 
 $uri = $_SERVER['REQUEST_URI'];
@@ -25,26 +25,27 @@ $uriParts = array_values($uriParts);
 $controller = isset($uriParts[0]) && $uriParts[0] !== '' ? $uriParts[0] : 'products';
 
 switch ($controller) {
-    case 'products':
+    case 'product' || 'products' || 'addFastProduct':
         $controller = sprintf('controller\%sController', 'Products');
         break;
-//    case 'user':
-//        $controller = sprintf('controller\%sController', 'User');
-//        break;
-    case 'addFastProduct':
-        $controller = 'controller\ProductsController';
-        break;
-
     default:
         die('error 404');
         break;
 }
 
 $action = isset($uriParts[1]) && $uriParts[1] !== '' ? $uriParts[1] : 'index';
-$action = sprintf('%sAction', $action);
-
-# получить id новости, карточки и т.п.
 
 $controller = new $controller();
-$controller->$action();
+
+if (is_numeric($action)) {
+    $itemId = $uriParts[1];
+    $action = 'itemAction';
+    $controller->$action($itemId);
+}
+
+else {
+    $action = sprintf('%sAction', $action);
+    $controller->$action();
+}
+
 $controller->render();

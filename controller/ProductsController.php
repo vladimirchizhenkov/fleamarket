@@ -22,7 +22,6 @@ class ProductsController extends BaseController
 
     public function addFastProductAction()
     {
-
         $db = DB::connect();
         $db->exec("set names utf8");
 
@@ -41,4 +40,16 @@ class ProductsController extends BaseController
         header('Location: /');
     }
 
+    public function itemAction($itemID)
+    {
+        $db = DB::connect();
+        $db->exec("set names utf8");
+
+        $thisModel = new FastProductModel($db);
+        $card = $thisModel->getItemByID($itemID);
+
+        $this->content = $this->templateBuild(__DIR__ . '/../view/tpl_parts/card.html.php', ['card' => $card]);
+
+        //https://obninsksite.ru/blog/html-and-css/input-file-style
+    }
 }

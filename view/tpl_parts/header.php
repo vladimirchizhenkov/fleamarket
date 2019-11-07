@@ -5,10 +5,10 @@
             <?php include_once 'modal.html.php' ?>
 
             <div class="inner inner--flex inner--flex-middle">
-                <a href="/index.php?c=home" class="link link--white link--mr-30">Главная</a>
-                <a href="/index.php?c=about" class="link link--white link--mr-30">О нас</a>
-                <a href="/index.php?c=contacts" class="link link--white link--mr-30">Контакты</a>
-                <a href="/index.php?c=donate" class="link link--white">Поддержать проект</a>
+                <a href="/" class="link link--white link--mr-30">Главная</a>
+                <a href="/about" class="link link--white link--mr-30">О нас</a>
+                <a href="/contacts" class="link link--white link--mr-30">Контакты</a>
+                <a href="/donate" class="link link--white">Поддержать проект</a>
             </div>
             <div class="inner">
                 <a data-modal="addFastProduct" class="link link--white link--modal" href="#addFastProduct">Разместить
