@@ -9,6 +9,8 @@
 
     <?php include_once 'tpl_parts/header.php' ?>
 
+    <?php include_once 'tpl_parts/top-nav.html.php'?>
+
     <div class="content">
         <div class="container">
             <div class="content__basic inner inner--flex">
