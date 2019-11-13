@@ -1,6 +1,7 @@
 <?php
 
 include_once 'core/DB.php';
+include_once 'core/Validator.php';
 //include_once 'core/Templater.php'; - используется в BaseController;
 include_once 'model/BaseModel.php';
 include_once 'model/FastProductModel.php';

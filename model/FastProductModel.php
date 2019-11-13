@@ -3,6 +3,7 @@
 namespace models;
 
 use core\DB;
+use core\Validator;
 
 class FastProductModel extends BaseModel
 {

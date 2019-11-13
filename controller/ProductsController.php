@@ -3,6 +3,7 @@
 namespace controller;
 
 use core\DB;
+use core\Validator;
 use models\FastProductModel;
 
 class ProductsController extends BaseController
@@ -34,10 +35,14 @@ class ProductsController extends BaseController
         $data['form_photo'] = "/source/uploads/" . $uploadFileName;
         $f_data             = $_FILES;
 
-        $mFtrade = new FastProductModel($db);
-        $mFtrade->addFastProduct($data);
+        if (Validator::checkForm($data) !== true) {
 
-        header('Location: /');
+        } else {
+            $mFtrade = new FastProductModel($db);
+            $mFtrade->addFastProduct($data);
+
+            header('Location: /');
+        }
     }
 
     public function itemAction($itemID)
