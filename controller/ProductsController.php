@@ -3,6 +3,7 @@
 namespace controller;
 
 use core\DB;
+use core\Helper;
 use core\Validator;
 use models\FastProductModel;
 
@@ -21,11 +22,18 @@ class ProductsController extends BaseController
         $this->content = $this->templateBuild(__DIR__ . '/../view/tpl_parts/cards-out.html.php', ['mFProducts' => $mFProducts]);
     }
 
-    public function addFastProductAction()
+    // Функция публикации быстрого объявления
+    public function addFastProductAction($dataArray)
     {
+        $data = json_decode($dataArray);
+
+        var_dump($data);
+        die();
+
         $db = DB::connect();
         $db->exec("set names utf8");
 
+        //  Обрабатываем данные из формы подачи объявления
         $uploadDir       = '/var/www/fleaphp.local/source/uploads/';
         $uploadFileName  = basename($_FILES['form__file']['tmp_name']) . '.' . basename($_FILES['form__file']['type']);
         $uploadFile      = $uploadDir . basename($_FILES['form__file']['tmp_name']) . '.' . basename($_FILES['form__file']['type']);
@@ -35,13 +43,18 @@ class ProductsController extends BaseController
         $data['form_photo'] = "/source/uploads/" . $uploadFileName;
         $f_data             = $_FILES;
 
+        // Если валидация не пройдена
         if (Validator::checkForm($data) !== true) {
-
+             $report = Validator::checkForm($data);
+             return $response = Helper::getResponse($report);
+        // Если валидация успешно пройдена
         } else {
             $mFtrade = new FastProductModel($db);
             $mFtrade->addFastProduct($data);
 
-            header('Location: /');
+            $report = 'Ваше объявление успешно добавлено! Оно будет опубликовано в течение 12 часов после проверки администратором';
+
+            return $response = Helper::getResponse($report);
         }
     }
 

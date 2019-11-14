@@ -32,7 +32,7 @@
 
 <script src="/source/js/common.js"></script>
 <script src="/source/js/ajax.js"></script>
-<script src="/source/js/validate-form.js"></script>
+<!--<script src="/source/js/validate-form.js"></script>-->
 
 </body>
 </html>

@@ -1,11 +1,14 @@
 <?php
+
 namespace core;
 
 abstract class Helper
 {
-    public function getTemplateParts($template) {
-        include_once '../tpl_parts/' . $template;
+    static public function prepareResponse($data) {
+        return $data;
+    }
+
+    static public function getResponse($data) {
+        return json_encode($data);
     }
 }
-
-include_once 'tpl_parts/modal.html.php' ?>

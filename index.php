@@ -1,6 +1,7 @@
 <?php
 
 include_once 'core/DB.php';
+include_once 'core/Helper.php';
 include_once 'core/Validator.php';
 //include_once 'core/Templater.php'; - используется в BaseController;
 include_once 'model/BaseModel.php';
@@ -9,6 +10,7 @@ include_once 'controller/BaseController.php';
 include_once 'controller/ProductsController.php';
 
 use core\DB;
+use core\Helper;
 use core\Templater;
 use models\BaseModel;
 use models\FastProductModel;
