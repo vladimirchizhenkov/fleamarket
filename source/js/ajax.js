@@ -35,7 +35,7 @@ btnFastProduct.onclick = function (e) {
     let formProduct     = document.querySelector('input[name="form_product"]').value;
     let formDescription = document.querySelector('input[name="form_description"]').value;
     let formPrice       = document.querySelector('input[name="form_price"]').value;
-    let formFile        = document.querySelector('input[name="form__file"]').value;
+    let formFile        = document.querySelector('input[name="form_file"]').value;
 
     let data = {
         "form_name": formName,
@@ -47,5 +47,5 @@ btnFastProduct.onclick = function (e) {
         "form_photo": formFile
     };
 
-    // ajax('/addFastProduct/addFastProduct', 'post', getResponseFastProduct, data);
+    console.log(ajax('/addFastProduct/addFastProduct', 'post', getResponseFastProduct, data));
 };

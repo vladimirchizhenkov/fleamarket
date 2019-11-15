@@ -23,12 +23,9 @@ class ProductsController extends BaseController
     }
 
     // Функция публикации быстрого объявления
-    public function addFastProductAction($dataArray)
+    public function addFastProductAction()
     {
-        $data = json_decode($dataArray);
-
-        var_dump($data);
-        die();
+        $data = $_POST;
 
         $db = DB::connect();
         $db->exec("set names utf8");
@@ -39,7 +36,6 @@ class ProductsController extends BaseController
         $uploadFile      = $uploadDir . basename($_FILES['form__file']['tmp_name']) . '.' . basename($_FILES['form__file']['type']);
         move_uploaded_file($_FILES['form__file']['tmp_name'], $uploadFile);
 
-        $data               = $_POST;
         $data['form_photo'] = "/source/uploads/" . $uploadFileName;
         $f_data             = $_FILES;
 

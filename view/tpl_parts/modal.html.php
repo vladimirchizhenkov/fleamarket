@@ -36,7 +36,7 @@
             </div>
 
             <input type="hidden" name="MAX_FILE_SIZE" value="500000" />
-            <input name="form__file" type="file" />
+            <input name="form_file" type="file" />
 
             <div class="inner inner--text-center">
                 <input type="submit" id="btnAddFastProducts" class="button" value="Разместить объявление">
