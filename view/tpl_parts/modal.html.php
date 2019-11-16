@@ -1,5 +1,4 @@
 <div id="addFastProduct" class="modal">
-    <div class="modal__back"></div>
     <div class="modal__content">
         <span data-modal="addFastProduct" class="modal__btn"></span>
         <form enctype="multipart/form-data" action="/addFastProduct/addFastProduct" method="post" class="form">

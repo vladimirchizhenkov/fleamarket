@@ -22,3 +22,7 @@ html, body {
   max-width: 960px;
   margin: 0 auto;
 }
+
+.no-scroll {
+  overflow: hidden;
+}

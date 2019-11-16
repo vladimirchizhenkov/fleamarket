@@ -30,14 +30,12 @@ class ProductsController extends BaseController
         $db = DB::connect();
         $db->exec("set names utf8");
 
-        //  Обрабатываем данные из формы подачи объявления
+        //  Обрабатываем данные для сохранения фотографии из формы быстрых объявлений
         $uploadDir       = '/var/www/fleaphp.local/source/uploads/';
         $uploadFileName  = basename($_FILES['form__file']['tmp_name']) . '.' . basename($_FILES['form__file']['type']);
         $uploadFile      = $uploadDir . basename($_FILES['form__file']['tmp_name']) . '.' . basename($_FILES['form__file']['type']);
         move_uploaded_file($_FILES['form__file']['tmp_name'], $uploadFile);
-
         $data['form_photo'] = "/source/uploads/" . $uploadFileName;
-        $f_data             = $_FILES;
 
         // Если валидация не пройдена
         if (Validator::checkForm($data) !== true) {

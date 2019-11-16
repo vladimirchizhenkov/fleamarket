@@ -1,19 +1,25 @@
 window.onload = function () {
 
-    let modals = document.querySelectorAll('.link--modal');
-    let closeBtnModal = document.querySelectorAll('.modal__btn');
+    let modals             = document.querySelectorAll('.link--modal');
+    let closeBtnModal      = document.querySelectorAll('.modal__btn');
     let btnAddFastProducts = document.querySelector('#btnAddFastProducts');
 
     function showModal() {
-        let getDataAttr = this.getAttribute('data-modal');
+        let tagBody         = document.querySelector('body');
+        let getDataAttr     = this.getAttribute('data-modal');
         let getCurrentModal = document.querySelector('#' + getDataAttr);
+
+        tagBody.classList.add('no-scroll');
         getCurrentModal.classList.add('modal--show');
     }
 
     function closeModal() {
-        let getDataAttr = this.getAttribute('data-modal');
+        let tagBody         = document.querySelector('body');
+        let getDataAttr     = this.getAttribute('data-modal');
         let getCurrentModal = document.querySelector('#' + getDataAttr);
+
         getCurrentModal.classList.remove('modal--show');
+        tagBody.classList.remove('no-scroll');
     }
 
     modals.forEach(function (modal) {
@@ -23,29 +29,5 @@ window.onload = function () {
     closeBtnModal.forEach(function (btn) {
         btn.onclick = closeModal;
     });
-
-    // btnAddFastProducts.onclick = function (event) {
-    //     event.preventDefault();
-    //     let parentFormElement = this.form.closest('.form');
-    //     let inputName = parentFormElement.querySelector('.form__input[name="form_name"]').value;
-    //     let inputTel = parentFormElement.querySelector('.form__input[name="form_tel"]').value;
-    //     let inputCity = parentFormElement.querySelector('.form__input[name="form_city"]').value;
-    //     let inputProductName = parentFormElement.querySelector('.form__input[name="form_product"]').value;
-    //     let inputPrice = parentFormElement.querySelector('.form__input[name="form_price"]').value;
-    //
-    //     let data = {
-    //         "name": inputName,
-    //         "tel": inputTel,
-    //         "city": inputCity,
-    //         "productName": inputProductName,
-    //         "price": inputPrice
-    //     };
-    //
-    //     ajax('/controller/ProductController/addNewFastProduct', 'POST', addFastProduct, data);
-    //
-    //     function addFastProduct() {
-    //         setTimeout(location.reload(), "2000");
-    //     }
-    // };
 
 };

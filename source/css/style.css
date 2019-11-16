@@ -666,6 +666,9 @@ html, body {
   max-width: 960px;
   margin: 0 auto; }
 
+.no-scroll {
+  overflow: hidden; }
+
 .text {
   color: #333; }
   .text--white {
@@ -1110,7 +1113,9 @@ html, body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 99; }
+  z-index: 99;
+  overflow-y: scroll;
+  background-color: rgba(0, 0, 0, 0.6); }
   .modal--show {
     display: -webkit-box;
     display: -webkit-flex;
@@ -1172,6 +1177,7 @@ html, body {
     width: 100%;
     background-color: #fff;
     padding: 24px;
+    margin: 150px 0 50px 0;
     z-index: 101; }
 
 .search-panel {

@@ -20,6 +20,7 @@ function ajax(url, method, functionName, dataArray) {
     }
 }
 
+// Эта функция отработает, если получим в ответе статус 200
 function getResponseFastProduct() {
     console.log('test response 200 OK');
 }
@@ -29,6 +30,7 @@ let btnFastProduct = document.querySelector('#btnAddFastProducts');
 btnFastProduct.onclick = function (e) {
     e.preventDefault();
 
+    // Получение данных из инпутов формы
     let formName        = document.querySelector('input[name="form_name"]').value;
     let formTel         = document.querySelector('input[name="form_tel"]').value;
     let formCity        = document.querySelector('input[name="form_city"]').value;
