@@ -931,6 +931,14 @@ html, body {
   background-color: #fff;
   padding: 8px 16px; }
 
+.form__file {
+  display: inline-block;
+  max-width: 500px;
+  width: 100%;
+  border: 1px solid #333;
+  background-color: #fff;
+  padding: 8px 16px; }
+
 .form__status {
   display: block;
   font-size: 12px;
@@ -1177,7 +1185,7 @@ html, body {
     width: 100%;
     background-color: #fff;
     padding: 24px;
-    margin: 150px 0 50px 0;
+    margin: 200px 0 50px 0;
     z-index: 101; }
 
 .search-panel {

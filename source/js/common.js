@@ -1,5 +1,4 @@
 window.onload = function () {
-
     let modals             = document.querySelectorAll('.link--modal');
     let closeBtnModal      = document.querySelectorAll('.modal__btn');
     let btnAddFastProducts = document.querySelector('#btnAddFastProducts');
@@ -29,5 +28,13 @@ window.onload = function () {
     closeBtnModal.forEach(function (btn) {
         btn.onclick = closeModal;
     });
+
+    let fileTest = document.querySelector('input[name="form_file"]');
+
+    fileTest.onchange = function () {
+        if (this.value !== undefined || this.value !== '') {
+            console.log(this.value);
+        }
+    };
 
 };

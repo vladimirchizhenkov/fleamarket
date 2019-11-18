@@ -61,7 +61,5 @@ class ProductsController extends BaseController
         $card = $thisModel->getItemByID($itemID);
 
         $this->content = $this->templateBuild(__DIR__ . '/../view/tpl_parts/card.html.php', ['card' => $card]);
-
-        //https://obninsksite.ru/blog/html-and-css/input-file-style
     }
 }

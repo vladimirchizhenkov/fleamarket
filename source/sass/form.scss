@@ -18,7 +18,10 @@
   }
 
   &__button {
+  }
 
+  &__file {
+    @include input-style;
   }
 
   &__status {
@@ -33,5 +36,4 @@
       color: $colorBlue;
     }
   }
-
 }
