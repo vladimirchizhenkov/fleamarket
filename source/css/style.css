@@ -931,13 +931,13 @@ html, body {
   background-color: #fff;
   padding: 8px 16px; }
 
-.form__file {
-  display: inline-block;
-  max-width: 500px;
-  width: 100%;
-  border: 1px solid #333;
-  background-color: #fff;
-  padding: 8px 16px; }
+.form__file-input {
+  width: 0; }
+
+.form__file-field {
+  border-bottom: 1px solid #333;
+  padding: 8px 16px;
+  margin-top: 4px; }
 
 .form__status {
   display: block;

@@ -36,7 +36,9 @@
             <div class="inner inner--mb-18">
                 <div class="form__title text text--size-s">Загрузите фотографию(-ии) товара</div>
                 <input type="hidden" name="MAX_FILE_SIZE" value="500000" />
-                <label class="form__file"><input style="visibility: hidden;" name="form_file" type="file" />Загрузить файл</label>
+                <label class="button">
+                    <input class="form__file-input" style="visibility: hidden;" name="form_file" type="file" /><span class="">Загрузить файл</span>
+                </label>
             </div>
             <div class="inner inner--text-center">
                 <input type="submit" id="btnAddFastProducts" class="button" value="Разместить объявление">

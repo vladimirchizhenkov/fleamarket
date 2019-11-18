@@ -30,10 +30,21 @@ window.onload = function () {
     });
 
     let fileTest = document.querySelector('input[name="form_file"]');
+    // Здесь будет функция обработки файлов из input type=file
+    // Здесь будет функция удаления файла из file list
 
     fileTest.onchange = function () {
         if (this.value !== undefined || this.value !== '') {
-            console.log(this.value);
+            // Находим родительский элемент инпута file
+            let parentElement = this.parentElement;
+
+            // Создаем новый Div под названия загруженных файлов
+            let fileNameField = document.createElement("div");
+            fileNameField.classList.add('form__file-field');
+
+            // Вставляем этот Div сразу после Label
+            parentElement.after(fileNameField);
+            fileNameField.innerHTML = this.value;
         }
     };
 

@@ -21,7 +21,16 @@
   }
 
   &__file {
-    @include input-style;
+  }
+
+  &__file-input {
+    width: 0;
+  }
+
+  &__file-field {
+    border-bottom: 1px solid $colorMain;
+    padding: 8px 16px;
+    margin-top: 4px;
   }
 
   &__status {
