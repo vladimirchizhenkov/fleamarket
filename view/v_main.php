@@ -4,7 +4,6 @@
 <?php include_once 'tpl_parts/head.html.php' ?>
 
 <body>
-
 <div class="body-wrapper">
 
     <?php include_once 'tpl_parts/header.php' ?>
@@ -30,8 +29,8 @@
 
 </div>
 
-<script src="/source/js/common.js"></script>
-<script src="/source/js/ajax.js"></script>
+<script type="module" src="/source/js/common.js"></script>
+<!--<script type="module" src="/source/js/ajax.js"></script>-->
 <!--<script src="/source/js/validate-form.js"></script>-->
 
 </body>
