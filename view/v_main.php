@@ -30,7 +30,7 @@
 </div>
 
 <script type="module" src="/source/js/common.js"></script>
-<!--<script type="module" src="/source/js/ajax.js"></script>-->
+<script type="module" src="/source/js/ajax.js"></script>
 <!--<script src="/source/js/validate-form.js"></script>-->
 
 </body>

@@ -1,7 +1,7 @@
 <div id="addFastProduct" class="modal">
     <div class="modal__content">
         <span data-modal="addFastProduct" class="modal__btn"></span>
-        <form enctype="multipart/form-data" action="/addFastProduct/addFastProduct" method="post" class="form">
+        <form enctype="multipart/form-data" method="post" class="form">
             <div class="form__caption text text--title-s">Разместить объявление</div>
             <div class="inner inner--mb-18">
                 <div class="form__title text text--size-s">Введите ваше имя</div>
