@@ -8,7 +8,7 @@
 
     <?php include_once 'tpl_parts/header.php' ?>
 
-    <?php include_once 'tpl_parts/top-nav.html.php'?>
+    <?php include_once 'tpl_parts/top-nav.html.php' ?>
 
     <div class="content">
         <div class="container">
@@ -31,7 +31,7 @@
 
 <script type="module" src="/source/js/common.js"></script>
 <script type="module" src="/source/js/ajax.js"></script>
-<!--<script src="/source/js/validate-form.js"></script>-->
+<script type="module" src="/source/js/validate-form.js"></script>
 
 </body>
 </html>
