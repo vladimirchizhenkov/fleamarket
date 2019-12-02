@@ -33,6 +33,7 @@ class ProductsController extends BaseController
         //  Обрабатываем данные для сохранения фотографии из формы быстрых объявлений
         $uploadDir       = '/var/www/fleaphp.local/source/uploads/';
         var_dump($_FILES);
+        var_dump($_POST);
         die();
         $uploadFileName  = basename($_FILES['form__file']['tmp_name']) . '.' . basename($_FILES['form__file']['type']);
 
