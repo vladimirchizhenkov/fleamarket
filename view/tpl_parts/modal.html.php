@@ -34,10 +34,10 @@
                 <input name="form_price" type="text" class="form__input"/>
             </div>
             <div class="inner inner--mb-18">
-                <div class="form__title text text--size-s">Загрузите фотографию(-ии) товара</div>
+                <div class="form__title text text--size-s">Загрузите до 5 фотографий товара</div>
                 <input type="hidden" name="MAX_FILE_SIZE" value="500000" />
                 <label class="button">
-                    <input class="form__file-input" style="visibility: hidden;" name="form_file" type="file" /><span class="">Загрузить файл</span>
+                    <input class="form__file-input" style="visibility: hidden;" name="form_file" type="file" multiple /><span class="">Загрузить файл</span>
                 </label>
             </div>
             <div class="inner inner--text-center">

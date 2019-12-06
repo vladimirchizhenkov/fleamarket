@@ -48,7 +48,6 @@ fileTest.onchange = function () {
     if (this.value !== undefined || this.value !== '') {
         // Находим родительский элемент инпута file
         let parentElement = this.parentElement;
-
         // Создаем новый Div под названия загруженных файлов
         let fileNameField = document.createElement("div");
         fileNameField.classList.add('form__file-field');
