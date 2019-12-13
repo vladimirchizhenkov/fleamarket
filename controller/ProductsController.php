@@ -5,7 +5,7 @@ namespace controller;
 use core\DB;
 use core\Helper;
 use core\Validator;
-use models\FastProductModel;
+use models\ProductModel;
 
 class ProductsController extends BaseController
 {
