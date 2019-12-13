@@ -3,7 +3,6 @@
 include_once 'core/DB.php';
 include_once 'core/Helper.php';
 include_once 'core/Validator.php';
-//include_once 'core/Templater.php'; - используется в BaseController;
 include_once 'model/BaseModel.php';
 include_once 'model/FastProductModel.php';
 include_once 'controller/BaseController.php';
@@ -11,12 +10,11 @@ include_once 'controller/ProductsController.php';
 
 use core\DB;
 use core\Helper;
-use core\Templater;
 use models\BaseModel;
 use models\FastProductModel;
 use controller\BaseController;
 
-function __autoload($class) {
+function __autoload ($class) {
     include_once __DIR__ . DIRECTORY_SEPARATOR .  str_replace('\\', DIRECTORY_SEPARATOR, $class) . 'php';
 }
 
@@ -28,7 +26,7 @@ $uriParts = array_values($uriParts);
 $controller = isset($uriParts[0]) && $uriParts[0] !== '' ? $uriParts[0] : 'products';
 
 switch ($controller) {
-    case 'product' || 'products' || 'addFastProduct':
+    case 'product' || 'products';
         $controller = sprintf('controller\%sController', 'Products');
         break;
     default:

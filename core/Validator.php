@@ -1,7 +1,7 @@
 <?php
 namespace core;
 
-class Validator
+abstract class Validator
 {
     private static $errors = [
         'name' => ['Имя не должно быть короче двух символов', 'Имя должно состоять только из букв'],

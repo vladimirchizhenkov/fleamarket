@@ -16,14 +16,14 @@ class ProductsController extends BaseController
         $db = DB::connect();
         $db->exec("set names utf8");
 
-        $mFtrade = new FastProductModel($db);
+        $mFtrade = new ProductModel($db);
         $mFProducts = $mFtrade->getAllItems();
 
         $this->content = $this->templateBuild(__DIR__ . '/../view/tpl_parts/cards-out.html.php', ['mFProducts' => $mFProducts]);
     }
 
-    // Функция публикации быстрого объявления
-    public function addFastProductAction()
+    // Функция публикации объявления
+    public function addProductAction()
     {
         $data = $_POST;
 
