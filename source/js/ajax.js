@@ -68,6 +68,6 @@ btnFastProduct.onclick = function (e) {
         "form_price": formPrice
     };
 
-    ajax('/addFastProduct/addFastProduct', 'post', getFormLoadResponse, data, true, formFiles);
+    ajax('/addProduct/addProduct', 'post', getFormLoadResponse, data, false, formFiles);
     common.clearInputsValue();
 };

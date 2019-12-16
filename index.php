@@ -1,5 +1,7 @@
 <?php
 
+include_once 'core/settings.php';
+include_once 'core/notification.php';
 include_once 'core/DB.php';
 include_once 'core/Helper.php';
 include_once 'core/Validator.php';
