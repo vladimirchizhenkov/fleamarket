@@ -20,7 +20,7 @@ abstract class BaseModel
     }
 
     public function getAllItems() {
-        $sql = sprintf('SELECT * FROM %s JOIN `users` ON users.id = product.product_user_id', $this->table);
+        $sql = sprintf('SELECT * FROM %s JOIN `users` ON users.user_id = product.product_user_id', $this->table);
         $stmt = $this->db->query($sql);
 
         return $stmt->fetchAll();
@@ -28,7 +28,7 @@ abstract class BaseModel
 
     public function getItemByID($id) {
         $params = ['id' => $id];
-        $sql = sprintf('SELECT * FROM %s WHERE ftrade_id = :id', $this->table);
+        $sql = sprintf('SELECT * FROM %s JOIN `users` ON users.user_id = product.product_user_id WHERE product.product_id = :id', $this->table);
 
         $stmt = $this->db->prepare($sql);
         $stmt->execute($params);

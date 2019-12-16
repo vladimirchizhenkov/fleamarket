@@ -16,10 +16,10 @@ class ProductsController extends BaseController
         $db = DB::connect();
         $db->exec("set names utf8");
 
-        $mFtrade = new ProductModel($db);
-        $mFProducts = $mFtrade->getAllItems();
+        $productsInfo = new ProductModel($db);
+        $products = $productsInfo->getAllItems();
 
-        $this->content = $this->templateBuild(__DIR__ . '/../view/tpl_parts/cards-out.html.php', ['mFProducts' => $mFProducts]);
+        $this->content = $this->templateBuild(__DIR__ . '/../view/tpl_parts/cards-out.html.php', ['products' => $products]);
     }
 
     // Функция публикации объявления
@@ -60,7 +60,7 @@ class ProductsController extends BaseController
         $db = DB::connect();
         $db->exec("set names utf8");
 
-        $thisModel = new FastProductModel($db);
+        $thisModel = new ProductModel($db);
         $card = $thisModel->getItemByID($itemID);
 
         $this->content = $this->templateBuild(__DIR__ . '/../view/tpl_parts/card.html.php', ['card' => $card]);
