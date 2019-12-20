@@ -54,4 +54,19 @@ class ProductModel extends BaseModel
     public function updateProduct($id)
     {
     }
+
+    // Функция получения товаров, находящихся на модерации (статус product_is_moderate = 0)
+    public function getNotModeratedProducts()
+    {
+    }
+
+    // Функция получения товаров, прошедших модерацию (статус product_is_moderate = 1)
+    public function getModeratedProducts()
+    {
+    }
+
+    // Функция получения всех товаров из таблицы Products
+    public function getAllProducts()
+    {
+    }
 }

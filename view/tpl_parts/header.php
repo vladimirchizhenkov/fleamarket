@@ -11,11 +11,10 @@
                 <a href="/donate" class="link link--white">Поддержать проект</a>
             </div>
             <div class="inner">
-                <a data-modal="addFastProduct" class="link link--white link--modal" href="#addFastProduct">Разместить
+                <a data-modal="addFastProduct" class="link link--white link--modal" href="#">Разместить
                     объявление</a>
                 <!--                    <a class="link link--white link--like link--ml-30" href="#"></a>-->
-                <a class="link link--white link--login link--ml-30" href="#">Вход
-                    / Регистрация</a>
+                <a class="link link--white link--login link--ml-30" href="#">Войти</a>
             </div>
         </div>
     </div>
