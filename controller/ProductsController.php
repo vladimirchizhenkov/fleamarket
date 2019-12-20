@@ -9,6 +9,13 @@ use models\ProductModel;
 
 class ProductsController extends BaseController
 {
+
+    private $responseReport = [
+        'success' => 'Ваше объявление успешно добавлено! Оно будет опубликовано в течение 12 часов после проверки администратором',
+        'error' => 'Возникла ошибка. Повторите запрос заново'
+    ];
+
+    // Получаем и выводим все карточки товара
     public function indexAction()
     {
         $this->title = 'Последние добавленные товары';
@@ -25,43 +32,46 @@ class ProductsController extends BaseController
     // Функция публикации объявления
     public function addProductAction()
     {
-
-
         $data = $_POST;
 
         $db = DB::connect();
         $db->exec("set names utf8");
 
-        //  Обрабатываем данные для сохранения фотографии из формы быстрых объявлений
-        $uploadDir = '/var/www/fleaphp.local/source/uploads/';
-        $uploadFileName  = basename($_FILES['form__file']['tmp_name']) . '.' . basename($_FILES['form__file']['type']);
-        $uploadFile      = $uploadDir . basename($_FILES['form__file']['tmp_name']) . '.' . basename($_FILES['form__file']['type']);
-        move_uploaded_file($_FILES['form__file']['tmp_name'], $uploadFile);
+        if (!empty($_FILES)) {
+            // Обрабатываем медиа-файлы
+            // Назначаем директорию хранения медиа-файлов
+            $uploadDir = '/var/www/fleaphp.local/source/uploads/';
+            // Формируем имя файла с mime-type
+            $uploadFileName = basename($_FILES['form__file']['tmp_name']) . '.' . basename($_FILES['form__file']['type']);
+            // Формируем полный путь до файла
+            $uploadFile = $uploadDir . basename($_FILES['form__file']['tmp_name']) . '.' . basename($_FILES['form__file']['type']);
+            // Перемещаем файл в директорию хранения медиа-файлов
+            move_uploaded_file($_FILES['form__file']['tmp_name'], $uploadFile);
+            // Получаем путь до файла для бд, от корня
+            $data['form_photo'] = "/source/uploads/" . $uploadFileName;
+        }
 
-        $data['form_photo'] = "/source/uploads/" . $uploadFileName;
-
-        // Если валидация не пройдена
+        // Валидируем данные формы
         if (Validator::checkForm($data) !== true) {
-             $report = Validator::checkForm($data);
-             return $response = Helper::getResponse($report);
-        // Если валидация успешно пройдена
+            $report = Validator::checkForm($data);
+
+            return $response = Helper::getResponse($this->report['error']);
         } else {
-            $mFtrade = new FastProductModel($db);
-            $mFtrade->addFastProduct($data);
+            $products = new ProductModel($db);
+            $products->addProduct($data);
 
-            $report = 'Ваше объявление успешно добавлено! Оно будет опубликовано в течение 12 часов после проверки администратором';
-
-            return $response = Helper::getResponse($report);
+            return $response = Helper::getResponse($this->responseReport['success']);
         }
     }
 
+    //  Функция получения и вывода карточки товара
     public function itemAction($itemID)
     {
         $db = DB::connect();
         $db->exec("set names utf8");
 
-        $thisModel = new ProductModel($db);
-        $card = $thisModel->getItemByID($itemID);
+        $products = new ProductModel($db);
+        $card = $products->getItemByID($itemID);
 
         $this->content = $this->templateBuild(__DIR__ . '/../view/tpl_parts/card.html.php', ['card' => $card]);
     }
