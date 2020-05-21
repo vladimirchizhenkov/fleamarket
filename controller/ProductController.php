@@ -5,16 +5,10 @@ namespace controller;
 use core\DB;
 use core\Helper;
 use core\Validator;
-use models\ProductModel;
+use model\ProductModel;
 
-class ProductsController extends BaseController
+class ProductController extends BaseController
 {
-
-    private $responseReport = [
-        'success' => 'Ваше объявление успешно добавлено! Оно будет опубликовано в течение 12 часов после проверки администратором',
-        'error' => 'Возникла ошибка. Повторите запрос заново'
-    ];
-
     // Получаем и выводим все карточки товара
     public function indexAction()
     {
@@ -24,7 +18,7 @@ class ProductsController extends BaseController
         $db->exec("set names utf8");
 
         $productsInfo = new ProductModel($db);
-        $products = $productsInfo->getAllItems();
+        $products = $productsInfo->getAllProducts();
 
         $this->content = $this->templateBuild(__DIR__ . '/../view/tpl_parts/cards-out.html.php', ['products' => $products]);
     }
@@ -68,11 +62,18 @@ class ProductsController extends BaseController
     public function itemAction($itemID)
     {
         $db = DB::connect();
-        $db->exec("set names utf8");
 
         $products = new ProductModel($db);
-        $card = $products->getItemByID($itemID);
+        $card = $products->getProductByID($itemID);
 
         $this->content = $this->templateBuild(__DIR__ . '/../view/tpl_parts/card.html.php', ['card' => $card]);
+    }
+
+    public function deleteProductAction($itemID) : bool
+    {
+        $db = DB::connect();
+        $db->exec("set names utf8");
+
+        return (new ProductModel($db))->deleteProduct($itemID);
     }
 }

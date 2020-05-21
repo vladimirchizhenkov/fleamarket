@@ -1,54 +1,53 @@
 <?php
 
-include_once 'core/settings.php';
-include_once 'core/notification.php';
-include_once 'core/DB.php';
-include_once 'core/Helper.php';
-include_once 'core/Validator.php';
-include_once 'model/BaseModel.php';
-include_once 'model/ProductModel.php';
-include_once 'controller/BaseController.php';
-include_once 'controller/ProductsController.php';
-
-use core\DB;
-use core\Helper;
-use models\BaseModel;
-use models\ProductModel;
-use controller\BaseController;
-
-function __autoload ($class) {
-    include_once __DIR__ . DIRECTORY_SEPARATOR .  str_replace('\\', DIRECTORY_SEPARATOR, $class) . 'php';
+// Автоподключение классов
+if (function_exists('__autoload')) {
+    spl_autoload_register('__autoload');
 }
 
+function __autoload($class) {
+    include_once str_replace('\\', DIRECTORY_SEPARATOR, $class) . '.php';
+};
+
+// Разбиваем входящий URI на части, вытаскиваем данные для формирования контроллера
 $uri = $_SERVER['REQUEST_URI'];
 $uriParts = explode('/', $uri);
 unset($uriParts[0]);
 $uriParts = array_values($uriParts);
 
-$controller = isset($uriParts[0]) && $uriParts[0] !== '' ? $uriParts[0] : 'products';
+// Получаем имя контроллера
+$controller = isset($uriParts[0]) && $uriParts[0] !== '' ? $uriParts[0] : 'product';
 
+// Формируем полный путь до контроллера
 switch ($controller) {
-    case 'product' || 'products';
-        $controller = sprintf('controller\%sController', 'Products');
+    case 'product';
+        $controller = sprintf('controller\%sController', 'Product');
         break;
     default:
-        die('error 404');
+        $controller = sprintf('controller\%sController', 'Error404');
         break;
 }
 
+// Определяем какой Action контроллера подключается
 $action = isset($uriParts[1]) && $uriParts[1] !== '' ? $uriParts[1] : 'index';
+
+// Если 2й и 3й элементы являются числами, то выкидываем 404
+if (is_numeric($uriParts[1]) && is_numeric($uriParts[2])) {
+    $controller = new controller\Error404Controller();
+    $controller->indexAction();
+    $controller->render();
+}
+
+$id = '';
+
+// Определяем ID'шник сущности
+if (isset($uriParts[1]) && $uriParts[1] !== '' && is_numeric($uriParts[1])) $id = $uriParts[1];
+if (isset($uriParts[2]) && $uriParts[2] !== '' && is_numeric($uriParts[2])) $id = $uriParts[2];
 
 $controller = new $controller();
 
-if (is_numeric($action)) {
-    $itemId = $uriParts[1];
-    $action = 'itemAction';
-    $controller->$action($itemId);
-}
+// Формируем полное название Action'a
+$action = sprintf('%sAction', $action);
 
-else {
-    $action = sprintf('%sAction', $action);
-    $controller->$action();
-}
-
+$controller->$action();
 $controller->render();

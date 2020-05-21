@@ -1,10 +1,10 @@
 <?php
 
-namespace models;
+namespace model;
 
 use core\DB;
 
-class UserModel {
+class UserModel extends BaseModel {
 
     private $db;
     private $table = 'users';
@@ -43,5 +43,4 @@ class UserModel {
     public function setUserStatus($status)
     {
     }
-
 }

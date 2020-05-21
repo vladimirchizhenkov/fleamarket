@@ -1,20 +1,31 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: IdeaFix
- * Date: 16.09.2019
- * Time: 22:47
- */
 
-namespace models;
-
-use core\DB;
+namespace model;
 
 class ProductModel extends BaseModel
 {
     public function __construct(\PDO $db)
     {
-        parent::__construct($db, 'product');
+        parent::__construct($db, 'products');
+    }
+
+    // Функция получения всех продуктов
+    public function getAllProducts() {
+        $sql = sprintf("SELECT * FROM %s LEFT JOIN `users` ON users.id = products.product_user_id WHERE products.product_is_moderate = '1'", $this->table);
+        $stmt = $this->db->query($sql);
+
+        return $stmt->fetchAll();
+    }
+
+    // Функция получения одного продукта по ID
+    public function getProductByID($id) {
+        $params = ['id' => $id];
+        $sql = sprintf('SELECT * FROM %s JOIN `users` ON users.id = products.product_user_id WHERE products.product_id = :id', $this->table);
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute($params);
+
+        return $stmt->fetch();
     }
 
     // Функция добавления товаров
@@ -55,6 +66,18 @@ class ProductModel extends BaseModel
     {
     }
 
+    // Функция удаления товара по ID (полное удаление)
+    public function deleteProduct($itemID) : bool
+    {
+        $params = ['id' => $itemID];
+        $sql = sprintf('DELETE * FROM %s WHERE id = :id', $this->table);
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute($params);
+
+        return true;
+    }
+
     // Функция получения товаров, находящихся на модерации (статус product_is_moderate = 0)
     public function getNotModeratedProducts()
     {
@@ -62,11 +85,6 @@ class ProductModel extends BaseModel
 
     // Функция получения товаров, прошедших модерацию (статус product_is_moderate = 1)
     public function getModeratedProducts()
-    {
-    }
-
-    // Функция получения всех товаров из таблицы Products
-    public function getAllProducts()
     {
     }
 }

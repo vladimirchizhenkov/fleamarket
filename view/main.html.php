@@ -8,7 +8,7 @@
 
     <?php include_once 'tpl_parts/header.php' ?>
 
-    <?php include_once 'tpl_parts/top-nav.html.php' ?>
+    <?= $topNav ?>
 
     <div class="content">
         <div class="container">

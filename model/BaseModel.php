@@ -6,7 +6,7 @@
  * Time: 23:03
  */
 
-namespace models;
+namespace model;
 
 abstract class BaseModel
 {
@@ -18,22 +18,4 @@ abstract class BaseModel
         $this->db = $db;
         $this->table = $table;
     }
-
-    public function getAllItems() {
-        $sql = sprintf("SELECT * FROM %s LEFT JOIN `users` ON users.user_id = product.product_user_id WHERE product.product_is_moderate = '1'", $this->table);
-        $stmt = $this->db->query($sql);
-
-        return $stmt->fetchAll();
-    }
-
-    public function getItemByID($id) {
-        $params = ['id' => $id];
-        $sql = sprintf('SELECT * FROM %s JOIN `users` ON users.user_id = product.product_user_id WHERE product.product_id = :id', $this->table);
-
-        $stmt = $this->db->prepare($sql);
-        $stmt->execute($params);
-
-        return $stmt->fetch();
-    }
-
 }

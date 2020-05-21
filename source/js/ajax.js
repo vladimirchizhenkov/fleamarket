@@ -9,6 +9,33 @@ function requestData(dataArray) {
     return out;
 }
 
+// Ajax-отправка текстовых полей
+function ajaxSendText(url, method, functionName, dataArray = {}) {
+    let xhttp = new XMLHttpRequest();
+    xhttp.open(method, url, true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send(requestData(dataArray));
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            functionName();
+        }
+    }
+}
+
+
+// Ajax-отправка медиа-файлов
+function ajaxSendMediaFiles(url, method, functionName, formFiles) {
+    let xhttp = new XMLHttpRequest();
+    let formData = new FormData();
+    xhttp.open(method, url, true);
+
+    for (const file of formFiles.files) {
+        formData.append("uploadFiles[]", file);
+    }
+
+    xhttp.send(formData);
+}
+
 // Основная AJAX-функция
 function ajax(url, method, functionName, dataArray = {}, sendFile = false, formFiles) {
     let xhttp = new XMLHttpRequest();
@@ -16,8 +43,6 @@ function ajax(url, method, functionName, dataArray = {}, sendFile = false, formF
 
     if (sendFile === true) {
         let formData = new FormData();
-
-        console.log(formFiles);
 
         for (const file of formFiles.files) {
             formData.append("uploadFiles[]", file);
@@ -36,14 +61,20 @@ function ajax(url, method, functionName, dataArray = {}, sendFile = false, formF
     }
 }
 
-// Эта функция отработает, если получим в ответе статус 200
-function getFormLoadResponse() {
-    console.log('test response 200 OK');
+// Эта функция отработает, если получим в ответе статус 200, при отправке текстового контента
+function getTextResponse() {
+    console.log('text response 200 OK ');
 }
+
+// Эта функция отработает, если получим в ответе статус 200, при отправке медиа-контента
+function getMediaResponse() {
+    console.log('media response 200 OK ');
+}
+
 
 // AJAX-запрос на отправку данных с формы размещения быстрого объявления
 let btnFastProduct = document.querySelector('#btnAddFastProducts');
-btnFastProduct.onclick = function (e) {
+btnFastProduct.onclick = function(e) {
     e.preventDefault();
 
     // Получение данных из инпутов формы
@@ -54,8 +85,8 @@ btnFastProduct.onclick = function (e) {
     let formDescription = document.querySelector('input[name="form_description"]').value;
     let formPrice       = document.querySelector('input[name="form_price"]').value;
 
+    // нужно собрать все файлы и отправить массивом в фуникцию
     let formFiles       = document.querySelector('input[name="form_file"]');
-
     // let formFile2       = document.querySelector('input[name="form_file"]').files[1].name;
     // let formFile3       = document.querySelector('input[name="form_file"]').files[2].name;
 
@@ -68,6 +99,9 @@ btnFastProduct.onclick = function (e) {
         "form_price": formPrice
     };
 
-    ajax('/addProduct/addProduct', 'post', getFormLoadResponse, data, false, formFiles);
+    // ajax('/addProduct/addProduct', 'post', getFormLoadResponse, data, false, formFiles);
+    ajaxSendText('/addProduct/addProduct', 'post', getTextResponse, data);
+    console.log('1');
+    ajaxSendMediaFiles('/addProduct/addProduct', 'post', getMediaResponse);
     common.clearInputsValue();
 };
