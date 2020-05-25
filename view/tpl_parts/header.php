@@ -14,7 +14,7 @@
                 <a data-modal="addFastProduct" class="link link--white link--modal" href="#">Разместить
                     объявление</a>
                 <!--                    <a class="link link--white link--like link--ml-30" href="#"></a>-->
-                <a class="link link--white link--login link--ml-30" href="#">Войти</a>
+                <a class="link link--white link--login link--ml-30" href="#">Вход / Регистрация</a>
             </div>
         </div>
     </div>

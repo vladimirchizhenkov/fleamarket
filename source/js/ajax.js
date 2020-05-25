@@ -22,7 +22,6 @@ function ajaxSendText(url, method, functionName, dataArray = {}) {
     }
 }
 
-
 // Ajax-отправка медиа-файлов
 function ajaxSendMediaFiles(url, method, functionName, formFiles) {
     let xhttp = new XMLHttpRequest();
@@ -101,7 +100,6 @@ btnFastProduct.onclick = function(e) {
 
     // ajax('/addProduct/addProduct', 'post', getFormLoadResponse, data, false, formFiles);
     ajaxSendText('/addProduct/addProduct', 'post', getTextResponse, data);
-    console.log('1');
-    ajaxSendMediaFiles('/addProduct/addProduct', 'post', getMediaResponse);
+    ajaxSendMediaFiles('/addProduct/addProduct', 'post', getMediaResponse, formFiles);
     common.clearInputsValue();
 };

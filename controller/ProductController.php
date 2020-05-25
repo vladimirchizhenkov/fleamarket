@@ -24,12 +24,9 @@ class ProductController extends BaseController
     }
 
     // Функция публикации объявления
-    public function addProductAction()
+    public function newProductAction() : bool
     {
         $data = $_POST;
-
-        $db = DB::connect();
-        $db->exec("set names utf8");
 
         if (!empty($_FILES)) {
             // Обрабатываем медиа-файлы
@@ -46,27 +43,39 @@ class ProductController extends BaseController
         }
 
         // Валидируем данные формы
-        if (Validator::checkForm($data) !== true) {
+        if (!Validator::checkForm($data)) {
             $report = Validator::checkForm($data);
 
             return $response = Helper::getResponse($this->report['error']);
-        } else {
-            $products = new ProductModel($db);
-            $products->addProduct($data);
-
-            return $response = Helper::getResponse($this->responseReport['success']);
         }
+
+        $db = DB::connect();
+        $db->exec("set names utf8");
+
+        $products = new ProductModel($db);
+
+        if ($products->addProduct($data)) return Helper::getResponse($this->responseReport['success']);
+
+        return false; // Должен быть жсон ответ с ошибкой
     }
 
     //  Функция получения и вывода карточки товара
-    public function itemAction($itemID)
+    public function getItemAction()
     {
         $db = DB::connect();
+        $db->exec("set names utf8");
+
+        // Получаем ID продукта
+        $itemID = $this->request->get('id');
 
         $products = new ProductModel($db);
         $card = $products->getProductByID($itemID);
 
-        $this->content = $this->templateBuild(__DIR__ . '/../view/tpl_parts/card.html.php', ['card' => $card]);
+        if ($card) {
+            return $this->content = $this->templateBuild(__DIR__ . '/../view/tpl_parts/card.html.php', ['card' => $card]);
+        }
+
+        return false; // Шаблон 404;
     }
 
     public function deleteProductAction($itemID) : bool
@@ -74,6 +83,10 @@ class ProductController extends BaseController
         $db = DB::connect();
         $db->exec("set names utf8");
 
-        return (new ProductModel($db))->deleteProduct($itemID);
+        $product = new ProductModel($db);
+
+        if ($product->deleteProduct($itemID)) return Helper::getResponse($this->responseReport['deleteSuccess']);
+
+        return false; // Должен быть жсон ответ с ошибкой
     }
 }

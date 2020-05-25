@@ -1,5 +1,7 @@
 <?php
 
+use core\Request;
+
 // Автоподключение классов
 if (function_exists('__autoload')) {
     spl_autoload_register('__autoload');
@@ -8,6 +10,8 @@ if (function_exists('__autoload')) {
 function __autoload($class) {
     include_once str_replace('\\', DIRECTORY_SEPARATOR, $class) . '.php';
 };
+
+session_start();
 
 // Разбиваем входящий URI на части, вытаскиваем данные для формирования контроллера
 $uri = $_SERVER['REQUEST_URI'];
@@ -32,22 +36,32 @@ switch ($controller) {
 $action = isset($uriParts[1]) && $uriParts[1] !== '' ? $uriParts[1] : 'index';
 
 // Если 2й и 3й элементы являются числами, то выкидываем 404
-if (is_numeric($uriParts[1]) && is_numeric($uriParts[2])) {
+if (is_numeric($uriParts[1]) && is_numeric($uriParts[2]) || count($uriParts) > 3) {
     $controller = new controller\Error404Controller();
     $controller->indexAction();
     $controller->render();
 }
 
-$id = '';
+// Назначаем пустой ID сущности
+$itemID = '';
 
-// Определяем ID'шник сущности
-if (isset($uriParts[1]) && $uriParts[1] !== '' && is_numeric($uriParts[1])) $id = $uriParts[1];
-if (isset($uriParts[2]) && $uriParts[2] !== '' && is_numeric($uriParts[2])) $id = $uriParts[2];
+// Определяем ID сущности
+if (isset($uriParts[1]) && $uriParts[1] !== '' && is_numeric($uriParts[1])) $itemID = $uriParts[1];
+if (isset($uriParts[2]) && $uriParts[2] !== '' && is_numeric($uriParts[2])) $itemID = $uriParts[2];
 
-$controller = new $controller();
+if (isset($itemID) && is_numeric($itemID)) $_GET['id'] = $itemID;
 
-// Формируем полное название Action'a
-$action = sprintf('%sAction', $action);
+// Определяем Action;
+if (is_numeric($uriParts[1])) {
+    $action = 'getItemAction';
+}
+else {
+    $action = sprintf('%sAction', $action);
+}
+
+$request = new Request($_GET, $_POST, $_SERVER, $_FILES, $_COOKIE, $_SESSION);
+
+$controller = new $controller($request);
 
 $controller->$action();
 $controller->render();

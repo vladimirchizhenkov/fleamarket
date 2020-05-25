@@ -9,7 +9,7 @@ abstract class Helper
     }
 
     static public function getResponse($data) {
-        return json_encode($data);
+        return json_encode($data, JSON_UNESCAPED_UNICODE);
     }
 
     static public function dd($arg) {

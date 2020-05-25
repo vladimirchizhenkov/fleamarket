@@ -10,7 +10,7 @@
             </div>
             <div class="inner inner--flex inner--flex-column">
                 <div class="footer__title text text--title-s">Информация</div>
-                <a href="#" class="footer__link link--black">Блог</a>
+                <a href="#" class="footer__link link--black">Новости проекта</a>
                 <a href="#" class="footer__link link--black">О нас</a>
                 <a href="#" class="footer__link link--black">Контакты</a>
                 <a href="#" class="footer__link link--black">Вакансии</a>

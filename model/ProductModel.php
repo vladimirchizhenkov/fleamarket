@@ -19,8 +19,10 @@ class ProductModel extends BaseModel
 
     // Функция получения одного продукта по ID
     public function getProductByID($id) {
-        $params = ['id' => $id];
-        $sql = sprintf('SELECT * FROM %s JOIN `users` ON users.id = products.product_user_id WHERE products.product_id = :id', $this->table);
+        $id = (int)$id;
+
+        $params = ['id' => $id];    
+        $sql = sprintf('SELECT * FROM %s LEFT JOIN `users` ON users.id = products.product_user_id WHERE products.product_id = :id', $this->table);
 
         $stmt = $this->db->prepare($sql);
         $stmt->execute($params);
@@ -34,25 +36,28 @@ class ProductModel extends BaseModel
         #extract($data); --- возможно будет более лаконично с этой функцией;
 
         // Добавляем в таблицу USERS
-        $form_name        = $data['form_name'];
-        $form_tel         = $data['form_tel'];
-        $form_city        = $data['form_city'];
+//        $form_name        = $data['form_name'];
+//        $form_tel         = $data['form_tel'];
+//        $form_city        = $data['form_city'];
 
         //
-        $form_product     = $data['form_product'];
-        $form_price       = (int)$data['form_price'];
-        $form_description = $data['form_description'];
-        $form_photo       = $data['form_photo'] ?: '/source/uploads/dump.jpg';
 
-        $params = ['product_title' => $form_product,
-                   'product_price' => $form_price,
-                   'product_photo' => $form_photo,
+        $form_product        = $data['form_product'];
+        $form_product_slug   = 'dump';
+        $form_price          = (int)$data['form_price'];
+        $form_description    = $data['form_description'];
+        $form_photo          = '/source/uploads/dump.jpg';
+
+        $params = ['product_title'       => $form_product,
+                   'product_slug'        => $form_product_slug,
+                   'product_price'       => $form_price,
+                   'product_photo'       => $form_photo,
                    'product_description' => $form_description
                   ];
 
         $sql = sprintf('INSERT INTO %s 
-               (product_id, product_title, product_price, product_photo, product_description) 
-                VALUES (null, :product_title, :product_price, :product_photo, :product_description)',
+               (product_id, product_title, product_slug, product_price, product_photo, product_description) 
+                VALUES (null, :product_title, :product_slug, :product_price, :product_photo, :product_description)',
             $this->table);
 
         $smtp = $this->db->prepare($sql);
@@ -70,7 +75,7 @@ class ProductModel extends BaseModel
     public function deleteProduct($itemID) : bool
     {
         $params = ['id' => $itemID];
-        $sql = sprintf('DELETE * FROM %s WHERE id = :id', $this->table);
+        $sql = sprintf('DELETE FROM %s WHERE product_id = :id', $this->table);
 
         $stmt = $this->db->prepare($sql);
         $stmt->execute($params);

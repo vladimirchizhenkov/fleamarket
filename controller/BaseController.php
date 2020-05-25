@@ -3,6 +3,7 @@
 namespace controller;
 
 use core\DB;
+use core\Request;
 use model\CategoryModel;
 
 class BaseController
@@ -10,16 +11,19 @@ class BaseController
     protected $title;
     protected $content;
     protected $topNav;
+    protected $request;
 
     protected $responseReport = [
         'success' => 'Ваше объявление успешно добавлено! Оно будет опубликовано в течение 12 часов после проверки администратором',
-        'error' => 'Возникла ошибка. Повторите запрос заново'
+        'error' => 'Возникла ошибка. Повторите запрос заново',
+        'deleteSuccess' => 'Ваше объявлени успешно удалено'
     ];
 
-    public function __construct()
+    public function __construct(Request $request)
     {
         $this->title = '';
         $this->content = '';
+        $this->request = $request;
     }
 
     public function render()
